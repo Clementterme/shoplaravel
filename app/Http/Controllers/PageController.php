@@ -8,7 +8,8 @@ class PageController extends Controller
 {
     public function home()
     {
-        return 'Page d\'accueil';
+        // return 'Page d\'accueil';
+        return route('products.show', ['id' => 42]);
     }
 
     public function about()
