@@ -6,11 +6,14 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
+    
+    public $boutique = ["nom" => "Boutique Laravel", "nombre_produits" => 42, "etat" => "Ouvert"];
+
     public function home()
     {
         // return 'Page d\'accueil';
-        // return route('products.show', ['id' => 42]);
-        return view('accueil');
+        // return redirect()->route('products.show', ['id' => 42]);
+        return view('accueil', ['boutique' => $this->boutique]);
     }
 
     public function about()
