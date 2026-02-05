@@ -18,6 +18,11 @@ class PageController extends Controller
 
     public function about()
     {
-        return 'À propos de nous';
+        return view('about');
+    }
+
+    public function contact()
+    {
+        return view('contact');
     }
 }

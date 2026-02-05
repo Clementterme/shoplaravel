@@ -18,8 +18,11 @@ Route::get('/', [PageController::class, 'home'])
 Route::get('/about', [PageController::class, 'about'])
     ->name('about');
 
+Route::get('/contact', [PageController::class, 'contact'])
+    ->name('contact');
+
 Route::get('/products/{id}', [ProductController::class, 'show'])
     ->name('products.show');
 
 Route::get('/index', [ProductController::class, 'index'])
-    ->name('index');
+    ->name('products.index');

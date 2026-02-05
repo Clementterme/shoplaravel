@@ -1,3 +1,7 @@
+@extends('../layouts/app')
+
+@section('content')
+
 <ul>
 
 @forelse ($products as $product)
@@ -6,4 +10,7 @@
     <li>Produit non trouvé</li>
 @endforelse
 
+
 </ul>
+
+@endsection
