@@ -20,3 +20,6 @@ Route::get('/about', [PageController::class, 'about'])
 
 Route::get('/products/{id}', [ProductController::class, 'show'])
     ->name('products.show');
+
+Route::get('/index', [ProductController::class, 'index'])
+    ->name('index');
