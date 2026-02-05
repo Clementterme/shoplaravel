@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1>Contact</h1>
+<h1 class="text-3xl font-bold mb-4">Contact</h1>
 
 <p>Contactez-nous ici</p>
 
