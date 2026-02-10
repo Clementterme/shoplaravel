@@ -7,46 +7,63 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function show($id)
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        $products = Product::all();
+
+        return view('products/index', compact('products'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
     {
         $products = Product::find($id);
 
         return view('products/show', compact('products'));
     }
 
-    public function index()
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
     {
+        //
+    }
 
-//        $products = [
-//            [
-//                "id" => 1,
-//                "nom" => "Clavier mécanique",
-//                "prix" => 79.99
-//            ],
-//            [
-//                "id" => 2,
-//                "nom" => "Souris gaming",
-//                "prix" => 49.90
-//            ],
-//            [
-//                "id" => 3,
-//                "nom" => "Écran 24 pouces",
-//                "prix" => 189.00
-//            ],
-//            [
-//                "id" => 4,
-//                "nom" => "Casque audio",
-//                "prix" => 99.50
-//            ],
-//            [
-//                "id" => 5,
-//                "nom" => "Webcam HD",
-//                "prix" => 59.99
-//            ]
-//        ];
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        //
+    }
 
-        $products = Product::all();
-
-        return view('products/index', compact('products'));
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
     }
 }
