@@ -13,6 +13,9 @@ Route::get('/about', [PageController::class, 'about'])
 Route::get('/contact', [PageController::class, 'contact'])
     ->name('contact');
 
+Route::get('/products/create', [ProductController::class, 'create'])
+    ->name('products.create');
+
 Route::get('/products/{id}', [ProductController::class, 'show'])
     ->name('products.show');
 
@@ -20,4 +23,3 @@ Route::get('/products/{id}', [ProductController::class, 'show'])
 //    ->name('products.index');
 
 Route::resource('/products', ProductController::class);
-
