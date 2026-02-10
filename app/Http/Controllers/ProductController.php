@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class ProductController extends Controller
 {
@@ -30,7 +31,28 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $validated = $request->validate([
+                'name' => 'required|string|max:255',
+                'slug' => 'required|string|max:255|unique:products,slug',
+                'description' => 'required|string',
+                'category_id' => 'required|in:1,2,3,4,5',
+                'price' => 'required|numeric|min:0',
+                'stock' => 'required|integer|min:0',
+                'active' => 'boolean',
+            ]);
+
+            Product::create($validated);
+
+            return redirect()
+                ->route('products.index')
+                ->with('success', 'Produit créé avec succès !');
+        } catch (\Throwable $e) {
+
+            return redirect()
+                ->route('products.index')
+                ->with('error', 'Une erreur est survenue.');
+        }
     }
 
     /**

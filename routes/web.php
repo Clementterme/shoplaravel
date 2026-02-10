@@ -23,3 +23,6 @@ Route::get('/products/{id}', [ProductController::class, 'show'])
 //    ->name('products.index');
 
 Route::resource('/products', ProductController::class);
+
+Route::post('/products', [ProductController::class, 'store'])
+    ->name('products.store');
