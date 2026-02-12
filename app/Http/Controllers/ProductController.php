@@ -25,7 +25,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        $categories = Category::all();
+        return view('products.create', compact('categories'));
     }
 
     /**
@@ -38,7 +39,7 @@ class ProductController extends Controller
                 'name' => 'required|string|max:255',
                 'slug' => 'required|string|max:255|unique:products,slug',
                 'description' => 'required|string',
-                'category_id' => 'required|in:1,2,3,4,5',
+                'category_id' => 'required|exists:categories,id',
                 'price' => 'required|numeric|min:0',
                 'stock' => 'required|integer|min:0',
                 'active' => 'boolean',
@@ -91,7 +92,7 @@ class ProductController extends Controller
                 'name' => 'required|string|max:255',
                 'slug' => 'required|string|max:255|unique:products,slug,' . $id,
                 'description' => 'required|string',
-                'category_id' => 'required|in:1,2,3,4,5',
+                'category_id' => 'required|exists:categories,id',
                 'price' => 'required|numeric|min:0',
                 'stock' => 'required|integer|min:0',
                 'active' => 'boolean',

@@ -55,12 +55,16 @@
             <select name="category_id" id="category_id"
                     class="w-full border rounded px-3 py-2"
                     required>
-                <option value="">-- Choisir une catégorie --</option>
-                <option value="1" {{ old('category_id', $product->category_id) == 1 ? 'selected' : '' }}>Électronique</option>
-                <option value="2" {{ old('category_id', $product->category_id) == 2 ? 'selected' : '' }}>Vêtements</option>
-                <option value="3" {{ old('category_id', $product->category_id) == 3 ? 'selected' : '' }}>Maison</option>
-                <option value="4" {{ old('category_id', $product->category_id) == 4 ? 'selected' : '' }}>Accessoires</option>
-                <option value="5" {{ old('category_id', $product->category_id) == 5 ? 'selected' : '' }}>Électroménager</option>
+{{--                <option value="">-- Choisir une catégorie --</option>--}}
+{{--                <option value="1" {{ old('category_id', $product->category_id) == 1 ? 'selected' : '' }}>Électronique</option>--}}
+{{--                <option value="2" {{ old('category_id', $product->category_id) == 2 ? 'selected' : '' }}>Vêtements</option>--}}
+{{--                <option value="3" {{ old('category_id', $product->category_id) == 3 ? 'selected' : '' }}>Maison</option>--}}
+{{--                <option value="4" {{ old('category_id', $product->category_id) == 4 ? 'selected' : '' }}>Accessoires</option>--}}
+{{--                <option value="5" {{ old('category_id', $product->category_id) == 5 ? 'selected' : '' }}>Électroménager</option>--}}
+
+                @foreach($categories as $category)
+                    <option value="{{ $category->id }}" {{ old('category_id', $product->category_id) == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
+                @endforeach
             </select>
         </div>
 
