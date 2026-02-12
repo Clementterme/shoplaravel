@@ -13,11 +13,14 @@ Route::get('/about', [PageController::class, 'about'])
 Route::get('/contact', [PageController::class, 'contact'])
     ->name('contact');
 
-Route::get('/products/create', [ProductController::class, 'create'])
-    ->name('products.create');
-
-Route::get('/products/{id}', [ProductController::class, 'show'])
-    ->name('products.show');
+//Route::get('/products/create', [ProductController::class, 'create'])
+//    ->name('products.create');
+//
+//Route::get('/products/edit/{id}', [ProductController::class, 'edit'])
+//    ->name('products.edit');
+//
+//Route::get('/products/{id}', [ProductController::class, 'show'])
+//    ->name('products.show');
 
 //Route::get('/products', [ProductController::class, 'index'])
 //    ->name('products.index');

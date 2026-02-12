@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -42,6 +43,8 @@ class ProductController extends Controller
                 'active' => 'boolean',
             ]);
 
+            $validated['active'] = $request->has('active');
+
             Product::create($validated);
 
             return redirect()
@@ -70,7 +73,9 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $categories = Category::all();
+        $product = Product::find($id);
+        return view('products.edit', compact('product', 'categories'));
     }
 
     /**
@@ -78,7 +83,33 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        try {
+            $product = Product::findOrFail($id);
+
+            $validated = $request->validate([
+                'name' => 'required|string|max:255',
+                'slug' => 'required|string|max:255|unique:products,slug,' . $id,
+                'description' => 'required|string',
+                'category_id' => 'required|in:1,2,3,4,5',
+                'price' => 'required|numeric|min:0',
+                'stock' => 'required|integer|min:0',
+                'active' => 'boolean',
+            ]);
+
+            $validated['active'] = $request->has('active');
+
+            $product->update($validated);
+
+
+            return redirect()
+                ->route('products.index')
+                ->with('success', 'Produit créé avec succès !');
+        } catch (\Throwable $e) {
+
+            return redirect()
+                ->route('products.index')
+                ->with('error', 'Une erreur est survenue.');
+        }
     }
 
     /**

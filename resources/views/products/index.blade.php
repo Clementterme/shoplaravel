@@ -19,11 +19,11 @@
 <ul>
 
 @forelse ($products as $product)
-    <li>{{ $product->name }} - {{ $product->price }} €<br><a href="/products/{{ $product->id }}">Détails du produit</a></li><br>
+    <li>{{ $product->name }} - {{ $product->price }} €<br><a href="/products/{{ $product->id }}">Détails du produit</a>
+        <a href="/products/{{ $product->id }}/edit">Modifier</a></li><br>
 @empty
     <li>Produit non trouvé</li>
 @endforelse
-
 
 </ul>
 
