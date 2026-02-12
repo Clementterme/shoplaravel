@@ -11,6 +11,7 @@
         <nav class="container mx-auto">
             <a href="{{ route('home') }}" class="font-bold text-xl">ShopLaravel</a>
             <a href="{{ route('products.index') }}" class="ml-4">Produits</a>
+            <a href="{{ route('categories.index') }}" class="ml-4">Catégories</a>
             <a href="{{ route('about') }}" class="ml-4">À propos</a>
             <a href="{{ route('contact') }}" class="ml-4">Contact</a>
             <a href="{{ route('products.create') }}" class="ml-4">Créer un produit</a>

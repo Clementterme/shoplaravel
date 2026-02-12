@@ -1,0 +1,1 @@
+Catégorie : {{ $category->name }}

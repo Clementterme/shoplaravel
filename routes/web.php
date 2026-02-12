@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 
 Route::get('/', [PageController::class, 'home'])
     ->name('home');
@@ -29,3 +30,8 @@ Route::resource('/products', ProductController::class);
 
 Route::post('/products', [ProductController::class, 'store'])
     ->name('products.store');
+
+Route::resource('/categories', CategoryController::class);
+
+//Route::get('/categories/{category}', [CategoryController::class, 'show']);
+//    ->name('category.show');
