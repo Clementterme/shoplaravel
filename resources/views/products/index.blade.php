@@ -20,7 +20,20 @@
 
 @forelse ($products as $product)
     <li>{{ $product->name }} - {{ $product->price }} €<br><a href="/products/{{ $product->id }}">Détails du produit</a>
-        <a href="/products/{{ $product->id }}/edit">Modifier</a></li><br>
+        <a href="/products/{{ $product->id }}/edit">Modifier</a></li>
+        <form action="{{ route('products.destroy', $product->id) }}"
+              method="POST"
+              class="inline"
+              onsubmit="return confirm('Voulez-vous vraiment supprimer ce produit ?');">
+            @csrf
+            @method('DELETE')
+
+            <button type="submit"
+                    class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded">
+                Supprimer
+            </button>
+        </form>
+        <br>
 @empty
     <li>Produit non trouvé</li>
 @endforelse

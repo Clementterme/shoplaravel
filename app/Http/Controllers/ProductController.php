@@ -117,6 +117,20 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+
+        $product = Product::find($id);
+
+        $product->delete();
+
+            return redirect()
+                ->route('products.index')
+                ->with('success', 'Produit "' . $product->name . '" supprimé avec succès !');
+        } catch (\Throwable $e) {
+
+            return redirect()
+            ->route('products.index')
+            ->with('error', 'Une erreur est survenue.');
+        }
     }
 }
