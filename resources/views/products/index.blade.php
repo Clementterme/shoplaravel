@@ -19,7 +19,7 @@
 <ul>
 
 @forelse ($products as $product)
-    <li><h2 class="text-lg">{{ $product->name }} - {{ $product->price }} €<p>Stock restant : {{ $product->stock }}</p></h2><br><a href="/products/{{ $product->id }}" class="bg-gray-400 hover:bg-gray-500 text-white w-full border rounded px-3 py-2">Détails du produit</a>
+    <li><h2 class="text-lg">{{ $product->name }} - {{ $product->price }} €<p>Stock restant : {{ $product->stock }}</p><p>Catégorie : {{ $product->category->name }}</p></h2><br><a href="/products/{{ $product->id }}" class="bg-gray-400 hover:bg-gray-500 text-white w-full border rounded px-3 py-2">Détails du produit</a>
         <a href="/products/{{ $product->id }}/edit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Modifier</a>
         <form action="{{ route('products.destroy', $product->id) }}"
               method="POST"
